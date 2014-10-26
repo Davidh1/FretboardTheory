@@ -12,7 +12,7 @@ public class Fretboard {
 	private Map<Integer, String> stringRootNotes;
 
 	public Fretboard() {
-		guitarStrings = new ArrayList<>();
+		guitarStrings = new ArrayList<GuitarString>();
 		initializeMaps();
 		initializeFretboard();
 	}

@@ -20,11 +20,11 @@ public class GUI {
 		for(GuitarString guitarString : fretboard.getGuitarStrings()){
 			for(Note note : guitarString.getNotes()){
 				JButton button = new JButton("Test");
+				button.setLocation(10, 10);
 				button.setSize(10, 10);
 				frame.add(button);
 			}
 		}
-		
 		frame.setVisible(true);
 	}
 
