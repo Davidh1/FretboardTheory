@@ -54,4 +54,14 @@ public class Fretboard {
 		stringRootNotes.put(5, "A");
 		stringRootNotes.put(6, "E");
 	}
+
+	public List<GuitarString> getGuitarStrings() {
+		return guitarStrings;
+	}
+
+	public void setGuitarStrings(List<GuitarString> guitarStrings) {
+		this.guitarStrings = guitarStrings;
+	}
+	
+	
 }
