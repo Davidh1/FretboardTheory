@@ -1,30 +1,46 @@
 package src.main.ui;
 
-import javax.swing.JButton;
+import java.awt.Container;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
+import javax.swing.SpringLayout;
 
 import src.main.guitar.Fretboard;
-import src.main.guitar.GuitarString;
 import src.main.guitar.Note;
 
 public class GUI {
 
-	public GUI(){
-		Fretboard fretboard = new Fretboard();		
+	private Dimension buttonDimension = new Dimension(100, 25);
+	private Dimension frameSize = new Dimension(1000, 750);
+
+	public GUI() {
+		Fretboard fretboard = new Fretboard();
 		JFrame frame = new JFrame("FRETBOARD THEORY!");
-				
-		frame.setSize(1000, 1000);//TODO: Make into ratio of the screen instead of hardcoding
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentPane = frame.getContentPane();
+		SpringLayout layout = new SpringLayout();	
 		
-		for(GuitarString guitarString : fretboard.getGuitarStrings()){
-			for(Note note : guitarString.getNotes()){
-				JButton button = new JButton("Test");
-				button.setLocation(10, 10);
-				button.setSize(10, 10);
-				frame.add(button);
+		Fret button = new Fret(fretboard.getGuitarStrings().get(0).getNotes().get(0));//get the first note of the first string
+//		contentPane.add(button);
+		layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, contentPane);
+		layout.putConstraint(SpringLayout.NORTH, button, 100, SpringLayout.NORTH, contentPane);
+		contentPane.add(button);
+		
+		
+		for (int i = 1; i < fretboard.getGuitarStrings().size(); i++) {
+			for (Note note : fretboard.getGuitarStrings().get(i).getNotes()) {
+//				contentPane.add(button);
+//				button = new Fret(note); 
+//				button.setPreferredSize(buttonDimension);
+//				layout.putConstraint(SpringLayout.WEST, button, 100, SpringLayout.WEST, contentPane);
+//				layout.putConstraint(SpringLayout.NORTH, button, 100, SpringLayout.NORTH, contentPane);
+//				
 			}
 		}
+		contentPane.setLayout(layout);
+		frame.setSize(frameSize);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

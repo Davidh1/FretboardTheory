@@ -8,8 +8,8 @@ public class GuitarString {
 	//	private List<Integer> frets;
 	private int stringNumber;
 	private String stringRoot;
-	private List<Note> notes = new ArrayList<Note>();;
-
+	private List<Note> notes = new ArrayList<Note>();//make this into a map?
+	
 	public GuitarString(int stringNumber, String stringRoot) {
 		this.stringNumber = stringNumber;
 		this.stringRoot = stringRoot;
