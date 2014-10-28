@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Fretboard {
 	private List<GuitarString> guitarStrings;
@@ -32,12 +33,12 @@ public class Fretboard {
 					noteNumber = rootNote + j - 24;
 				}
 				Note note = new Note(noteNumber , Note.noteLetters.get(noteNumber), j);
-				guitarString.getNotes().add(note);
+				guitarString.getNotes().put(j, note);
 			}
 			guitarStrings.add(guitarString);
 		}
 		for (GuitarString guitarString : guitarStrings) {
-			for (Note note : guitarString.getNotes()){
+			for(Entry<Integer, Note> note : guitarString.getNotes().entrySet()){
 				System.out.println("String number = " + guitarString.getStringNumber() + " String Root = " + guitarString.getStringRoot() + " Note = " + note);
 			}
 		}

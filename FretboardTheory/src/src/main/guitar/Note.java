@@ -3,11 +3,18 @@ package src.main.guitar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Note {
+import javax.swing.JButton;
 
+public class Note extends JButton{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int noteNumber;
 	private int fretNumber;
 	private String noteLetter;
+	private boolean clicked = false;
 
 	public static final Map<Integer, String> noteLetters = new HashMap<Integer, String>();
 	static {
@@ -45,6 +52,7 @@ public class Note {
 		this.noteNumber = noteNumber;
 		this.noteLetter = noteLetter;
 		this.fretNumber = fretNumber;
+		setText(noteLetter);
 	}
 	
 	public int getNoteNumber(){
@@ -72,6 +80,14 @@ public class Note {
 		this.fretNumber = fretNumber;
 	}
 	
+	public boolean isClicked() {
+		return clicked;
+	}
+
+	public void setClicked(boolean clicked) {
+		this.clicked = clicked;
+	}
+
 	@Override
 	public String toString(){
 		return "Note Number = " + noteNumber + " Fret Number = " + fretNumber + " Note Letter = " + noteLetter;// + " String Letter = " //+ baseNoteLetter;

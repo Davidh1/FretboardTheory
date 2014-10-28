@@ -1,22 +1,22 @@
 package src.main.guitar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class GuitarString {
 
-	//	private List<Integer> frets;
 	private int stringNumber;
 	private String stringRoot;
-	private List<Note> notes = new ArrayList<Note>();//make this into a map?
-	
+	private Map<Integer, Note> notes = new HashMap<Integer, Note>();
+
 	public GuitarString(int stringNumber, String stringRoot) {
 		this.stringNumber = stringNumber;
 		this.stringRoot = stringRoot;
 	}
 
-	public List<Note> getNotes() {
-		return notes;
+	public HashMap<Integer, Note> getNotes() {
+		return (HashMap<Integer, Note>) notes;
 	}
 
 	public int getStringNumber() {
@@ -38,12 +38,9 @@ public class GuitarString {
 	@Override
 	public String toString() {
 		StringBuffer stringBuffer = new StringBuffer();
-		/* looping through a map...cool */
-		//		for(Entry<Integer, String> note : notes.entrySet()){
-		//			stringBuffer.append(" Fret = " + note.getKey() + " Note = " + note.getValue());
-		//		}
-		for (Note note : notes) {
-			stringBuffer.append("String number = " + stringNumber + "String Root = " + stringRoot + " Fret = " + note.getFretNumber() + " Note Number = " + note.getNoteNumber() + " Note = " + note.getNoteLetter());
+
+		for (Entry<Integer, Note> note : notes.entrySet()) {
+			stringBuffer.append(" Fret = " + note.getKey() + " Note = " + note.getValue());
 		}
 		return stringBuffer.toString();
 	}
